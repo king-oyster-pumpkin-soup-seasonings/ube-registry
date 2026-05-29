@@ -17,7 +17,7 @@ export async function PUT(
     `,
     [body.specimen_id, body.provisional_name, body.classification_status, id],
   );
-  return Response.json(result.rows[0]);
+  return Response.json({ ...result.rows[0] });
 }
 
 export async function DELETE(
@@ -25,9 +25,6 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const result = await db.query(
-    "DELETE FROM entities WHERE id = $1 RETURNING *",
-    [id],
-  );
-  return Response.json(result.rows[0]);
+  await db.query("DELETE FROM entities WHERE id = $1 RETURNING *", [id]);
+  return Response.json({ message: "Entity deleted successfully", id });
 }
