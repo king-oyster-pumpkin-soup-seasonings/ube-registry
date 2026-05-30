@@ -1,16 +1,20 @@
-async function getEntities() {
-  const result = await fetch("http://localhost:3000/api/entities", {
-    cache: "no-store",
-  });
-  return result.json();
+"use client";
+
+import Card from "@/components/Card";
+import { useEffect, useState } from "react";
+
+interface Entity {
+  id: number;
+  specimen_id: string;
+  provisional_name: string;
+  classification_status: string;
+  created_at: string;
 }
 
-export default async function Home() {
-  const entities = await getEntities();
+export default function Dashboard() {
   return (
-    <div>
-      <h1>Entities</h1>
-      <pre>{JSON.stringify(entities, null, 2)}</pre>
-    </div>
+    <main>
+      <div className="h-lvh bg-yellow-50"></div>
+    </main>
   );
 }
