@@ -6,8 +6,8 @@ export default function Header() {
       <Image
         src="/header_logo_ube_registry.png"
         alt="UBE Registry Logo"
-        width={333}
-        height={333}
+        width={420}
+        height={420}
         className="h-auto w-auto"
       />
     </header>
